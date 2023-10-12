@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="validate()">
+        <label>Enter name:</label>
+        <input type="text" id="name">
+        <label>Enter Division:</label>
+        <input type="text" id="div">
+        <label>Enter Roll no.:</label>
+        <input type="number" id="roll">
+        <input type="submit">
+
+    </form>
+    <script>
+        const curr_year= new Date().getFullYear();
+        class person{
+    
+            constructor(name,year,gender){
+                this.name=name
+                this.gender=gender
+                this.age=curr_year-year
+            }
+            
+            print_details() {
+                alert(`${this.name} is of age ${this.age} and of gender ${this.gender}`)
+                
+            }
+
+            example(){
+                console.log("Hi from parent")
+            }
+        }
+
+class student extends person{
+    constructor(name,year,gender,div,roll){
+        super(name,year,gender)
+        this.div=div
+        this.roll=roll
+    }
+    print_stu_details(){
+        alert(`Div:${this.div}  Roll no.:${this.roll}`)
+
+    }
+    example(){
+        console.log("hi from child")
+    }
+}
+
+function validate(){
+    let name=document.getElementById("name").value
+    let div=document.getElementById("div").value
+    let roll=document.getElementById("roll").value
+    //if (roll==0){
+      //  throw new Error("Invalid roll no")
+    //}
+    try{
+        if (roll==0){
+            throw new Error
+        }
+        let soham = new student(name,2003,"Male",div,roll)
+        soham.print_details()
+        soham.print_stu_details()        
+    }
+    catch(Error){
+        alert("Invalid roll no")
+        
+    }
+
+}
+var soham = new person()
+soham.example()
+soham =new student()
+soham.example()
+
+
+    </script>
+</body>
+</html>
